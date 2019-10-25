@@ -53,6 +53,7 @@ body, html {
 }
 
 #container {
+  background-color: #eeeeee;
   flex-grow: 1;
   min-width: 300px;
   min-height: 300px;
@@ -69,5 +70,21 @@ body, html {
     overflow-y: auto;
     max-height: auto;
   }
+}
+
+.codebg {
+  background-color: #333;
+}
+
+.codebgblue {
+  background-color: #445;
+}
+
+.code {
+  padding: 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: #EEEEEE;
 }
 </style>
