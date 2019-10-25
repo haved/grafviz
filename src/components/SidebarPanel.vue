@@ -64,6 +64,7 @@ export default class SidebarPanel extends Vue {
 /* These apply to the panel element itself */
 .open {
     flex-grow: 10;
+    min-height: 10rem;
 }
 
 .closed {
@@ -72,6 +73,10 @@ export default class SidebarPanel extends Vue {
 
 .open>.content {
     overflow: auto;
+}
+
+.closed>.content {
+    overflow: hidden;
 }
 
 </style>
