@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="main_contents">
+    <div class="menubar_and_container">
       <menubar v-bind="menubar"></menubar>
       <div id="container"></div>
     </div>
@@ -28,6 +28,7 @@ export default class App extends Vue {
 <style lang="scss">
 html {
   overflow: hidden;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body, html {
@@ -42,11 +43,9 @@ body, html {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.main_contents {
+.menubar_and_container {
   flex-grow: 10;
   display:flex;
   flex-direction: column;

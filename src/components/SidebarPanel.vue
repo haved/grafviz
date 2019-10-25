@@ -1,11 +1,13 @@
 <template>
-    <div class="panel">
-      <div class="titlebar">{{title}}</div>
+    <div class="panel"
+    v-bind:class="{ open: !hidden, closed: hidden }">
+      <div v-on:click="toggle" class="titlebar">{{title}}</div>
       <div class="content">
         <div class="inner">
             Hei hei
             <br>
             hei på dei
+            a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>ba<br>da<br>ea<br>fa<br>aa<br>sa<br>sa<br>ea<br>
         </div>
       </div>
     </div>    
@@ -19,6 +21,10 @@ import GuideText from './GuideText.vue';
 @Component
 export default class SidebarPanel extends Vue {
   @Prop() private title!: string;
+  hidden = true;
+  toggle() {
+      this.hidden = !this.hidden;
+  }
 }
 </script>
 
@@ -46,9 +52,9 @@ export default class SidebarPanel extends Vue {
 }
 
 .content {
-    position: relative;
     flex-grow: 1;
     background-color: white;
+    position: relative;
 }
 
 .inner {
@@ -65,7 +71,7 @@ export default class SidebarPanel extends Vue {
 }
 
 .open>.content {
-    overflow-y: auto;
+    overflow: auto;
 }
 
 </style>

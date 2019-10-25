@@ -1,7 +1,7 @@
 <template>
     <div class="guide">
         <div class="code">
-             Test 123<br>
+            Test 123<br>
             Masse<br>
             Linjer<br>
             Mange<br>
@@ -30,10 +30,12 @@ export default class GuideText extends Vue {
     padding: 0.5rem;
     background-color: #333;
 
-    overflow-y: auto;
+    overflow: auto;
+    position: relative;
 }
 
 .code {
+    position: absolute;
     font-family: 'Courier New', Courier, monospace;
     line-height: 1.5rem;
     font-weight: 600;
