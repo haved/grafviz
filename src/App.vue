@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <menubar v-bind="menubar"></menubar>
     <div class="main_contents">
+      <menubar v-bind="menubar"></menubar>
       <div id="container"></div>
-      <sidebar v-bind="sidebar"></sidebar>
     </div>
+    <sidebar v-bind="sidebar"></sidebar>
   </div>
 </template>
 
@@ -27,7 +27,6 @@ export default class App extends Vue {
 
 <style lang="scss">
 html {
-  max-height: 100vh;
   overflow: hidden;
 }
 
@@ -38,25 +37,24 @@ body, html {
 
 #app {
   width: 100%;
-  height: 100vh;
-  max-height: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: stretch;
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .main_contents {
-  max-height: 100%;
-  flex-grow: 1;
+  flex-grow: 10;
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: stretch;
 }
 
 #container {
-  flex-grow: 10;
+  flex-grow: 1;
   min-width: 300px;
   min-height: 300px;
 }
@@ -65,11 +63,10 @@ body, html {
  * On screens smaller than or equal to this, we put the sidebar bellow and allow scrolling down
  */
 @media screen and (max-width: 70rem) {
-  .main_contents {
+  #app {
     flex-direction: column;
-    align-items: stretch;
   }
-  html {
+  html, body, #app {
     overflow-y: auto;
     max-height: auto;
   }
