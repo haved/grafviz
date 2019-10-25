@@ -1,8 +1,25 @@
 import Vue from 'vue'
 import App from './App.vue'
-
 Vue.config.productionTip = false
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+function main() {
+  const props = {
+    menubar: {
+      current: "Treep"
+    },
+    sidebar: {
+      panels: [
+        {title:"Node type"},
+        {title:"Globals"},
+        {title:"Algorithms"}
+      ]
+    },
+    testo:"Heieie"
+  };
+
+  const instance = new Vue({
+    render: h => h(App, {props}),
+  }).$mount('#app');
+}
+
+main();

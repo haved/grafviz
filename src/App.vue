@@ -1,29 +1,71 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <menubar v-bind="menubar"></menubar>
+    <div class="main_contents">
+      <div id="container"></div>
+      <sidebar v-bind="sidebar"></sidebar>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import Menubar from './components/Menubar.vue';
+import Sidebar from './components/Sidebar.vue';
 
 @Component({
   components: {
-    HelloWorld,
-  },
+    Menubar,
+    Sidebar
+  }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  @Prop() private menubar!:object;
+  @Prop() private sidebar!:object;
+}
 </script>
 
 <style lang="scss">
+html {
+  overflow: hidden;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#container {
+  flex-grow: 10;
+}
+
+.main_contents {
+  flex-grow: 1;
+  display:flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+/**
+ * On screens smaller than 500px, we put the sidebar bellow
+ */
+@media screen and (max-width: 500px) {
+  .main_contents {
+    flex-direction: column
+  }
+  html {
+    overflow-y: auto;
+  }
 }
 </style>
