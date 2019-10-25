@@ -27,6 +27,7 @@ export default class App extends Vue {
 
 <style lang="scss">
 html {
+  max-height: 100vh;
   overflow: hidden;
 }
 
@@ -38,34 +39,39 @@ body, html {
 #app {
   width: 100%;
   height: 100vh;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: stretch;
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#container {
-  flex-grow: 10;
-}
-
 .main_contents {
+  max-height: 100%;
   flex-grow: 1;
   display:flex;
   flex-direction: row;
   align-items: stretch;
 }
 
+#container {
+  flex-grow: 10;
+  min-width: 300px;
+  min-height: 300px;
+}
+
 /**
- * On screens smaller than 500px, we put the sidebar bellow
+ * On screens smaller than or equal to this, we put the sidebar bellow and allow scrolling down
  */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 70rem) {
   .main_contents {
-    flex-direction: column
+    flex-direction: column;
+    align-items: stretch;
   }
   html {
     overflow-y: auto;
+    max-height: auto;
   }
 }
 </style>

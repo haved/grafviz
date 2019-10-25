@@ -6,11 +6,7 @@
             Linjer<br>
             Mange<br>
             Mange<br>
-            <br>
-            <br>
-            <br>
-            <br>
-            Linjer
+            a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>ba<br>aa<br>da<br>ea<br>ea<br>fa<br>ea<br>ea<br>fa<br>aa<br>ea<br>ra<br>eya<br>fa<br>wa<br>ydya<br>Ferdig
         </div>
     </div>
 </template>
@@ -32,12 +28,11 @@ export default class GuideText extends Vue {
 
     padding: 0.5rem;
     background-color: #333;
-    position: relative;
+
+    overflow-y: auto;
 }
 
 .code {
-    position: absolute;
-
     font-family: 'Courier New', Courier, monospace;
     line-height: 1.5rem;
     font-weight: 600;
