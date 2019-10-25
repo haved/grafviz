@@ -1,24 +1,23 @@
-# graphviz
+# Graphviz
 
-## Project setup
+A website for visualizing a few different graph based data structures and algorithms.  
+Built using Vue and Typescript.
+
+### Try it out
+I will host it once it can show something :)
+
+### Setup
+Install dependencies
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+Start a local server with hot-reloading
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+Or build a production build with
 ```
 yarn build
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
