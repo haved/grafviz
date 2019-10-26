@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="menubar_and_container">
-      <menubar v-bind="model.menubar"></menubar>
+      <menubar v-bind="ui_model.menubar"></menubar>
       <div id="container"></div>
     </div>
-    <sidebar v-bind="model.sidebar"></sidebar>
+    <sidebar v-bind="ui_model.sidebar"></sidebar>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import Menubar from './components/Menubar.vue';
 import Sidebar from './components/Sidebar.vue';
 
-import {GraphVizUI} from './model';
+import {GraphVizUI} from './ui-model';
 
 @Component({
   components: {
@@ -24,7 +24,7 @@ import {GraphVizUI} from './model';
 export default class App extends Vue {
   data() {
     return {
-      model: new GraphVizUI()
+      ui_model: new GraphVizUI()
     }
   }
 }

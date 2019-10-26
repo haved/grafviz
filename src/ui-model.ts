@@ -35,32 +35,8 @@ export class MenubarUI {
         this.buttons_list = [];
         for (let id = 0; id <= MenubarButton.Stop; id++)
             this.buttons_list[id] = new MenubarButtonUI(id, menubar_icons[id], this.on_click.bind(this));
-        this.on_running();
     }
-
     on_click(id: MenubarButton) {
-        if(id == MenubarButton.Undo)
-            this.on_running();
-        if(id == MenubarButton.Stop)
-            this.on_stopped();
-    }
-
-    on_stopped() {
-        //TODO: Only enable if there is an undo or redo stack
-        
-        this.buttons_list[MenubarButton.Undo].enabled = true;
-        this.buttons_list[MenubarButton.Redo].enabled = true;
-        for(let id = MenubarButton.Pause; id <= MenubarButton.Stop; id++)
-            this.buttons_list[id].hidden = true;
-    }
-
-    on_running() {
-        this.buttons_list[MenubarButton.Undo].enabled = false;
-        this.buttons_list[MenubarButton.Redo].enabled = false;
-        for(let id = MenubarButton.Pause; id <= MenubarButton.Stop; id++)
-            this.buttons_list[id].hidden = false;
-        for(let id = MenubarButton.Pause; id <= MenubarButton.Faster; id++)
-            this.buttons_list[id].toggled_off = true;
     }
 }
 
