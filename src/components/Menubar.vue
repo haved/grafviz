@@ -11,7 +11,6 @@
     <div class="structure_dropdown">
       {{current_structure_name}}
     </div>
-    <div class="flexer"></div>
   </div>
 </template>
 
@@ -42,7 +41,7 @@ export default class Menubar extends Vue {
 }
 
 .buttons {
-  margin: 0rem 1.6rem;
+  margin: 0rem 1.6rem; //Each button has .4rem, 2rem in total
   display: flex;
   font-size: 2rem;
 }
