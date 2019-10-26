@@ -1,7 +1,7 @@
 <template>
   <div class="menubar">
     <div class="structure_dropdown">
-      {{current}}
+      {{current_structure_name}}
     </div>
   </div>
 </template>
@@ -9,9 +9,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-@Component
+import MenubarButton from './MenubarButton.vue';
+
+@Component({
+  components: {MenubarButton}
+})
 export default class Menubar extends Vue {
-  @Prop() private current!: string;
+  @Prop() private current_structure_name!: string;
 }
 </script>
 

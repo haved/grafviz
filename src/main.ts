@@ -3,23 +3,12 @@ import './plugins/fontawesome'
 import App from './App.vue'
 Vue.config.productionTip = false
 
-function main() {
-  const props = {
-    menubar: {
-      current: "Treep"
-    },
-    sidebar: {
-      panels: [
-        {title:"Node type"},
-        {title:"Globals"},
-        {title:"Algorithms"}
-      ]
-    },
-    testo:"Heieie"
-  };
+import {GraphVizUI} from './model';
 
+function main() {
+  const ui_model = new GraphVizUI();
   const instance = new Vue({
-    render: h => h(App, {props}),
+    render: h => h(App, {props: ui_model}),
   }).$mount('#app');
 }
 

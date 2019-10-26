@@ -5,7 +5,7 @@
     v-bind:key="panel.id"
     v-bind="panel">
     </sidebar-panel>
-    <guide-text v-bind="guide_text"></guide-text>
+    <guide-text :text="guide_text"></guide-text>
   </div>
 </template>
 

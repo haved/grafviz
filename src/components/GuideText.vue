@@ -1,6 +1,7 @@
 <template>
   <div class="guide">
     <div class="inner codefont">
+      <span v-if="text==null">
       <h2>Graphviz</h2>
       This website lets you visualize different graph based datastructures, and visually see the algorithms operating on the graphs.<br>
       At the top of the page you can choose the data structure of your choice.<br>
@@ -15,6 +16,10 @@
       This panel shows functions that can be done on the graph.
       Click one to expand it, and click again to put it on the execute-bar.
       Here you can also see the algorithm as it executes.
+      </span>
+      <span v-else>
+        {{text}}
+      </span>
     </div>
   </div>
 </template>
@@ -23,7 +28,9 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class GuideText extends Vue {}
+export default class GuideText extends Vue {
+  @Prop() text?: string;
+}
 </script>
 
 <style scoped lang="scss">
