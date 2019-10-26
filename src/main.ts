@@ -10,6 +10,7 @@ function main() {
   const instance = new Vue({
     render: h => h(App, {props: ui_model}),
   }).$mount('#app');
+  ui_model.menubar.current_structure_name = "Halla";
 }
 
 main();
