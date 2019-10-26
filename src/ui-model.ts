@@ -32,11 +32,11 @@ export class MenubarUI {
     current_structure_name: string;
     buttons_list: MenubarButtonUI[];
 
-    constructor(structure_name: string, on_menubar_click:(id:MenubarButton)=>any) {
+    constructor(structure_name: string, controller: GraphVizController) {
         this.current_structure_name = structure_name;
         this.buttons_list = [];
         for (let id = 0; id <= MenubarButton.Stop; id++)
-            this.buttons_list[id] = new MenubarButtonUI(id, menubar_icons[id], on_menubar_click);
+            this.buttons_list[id] = new MenubarButtonUI(id, menubar_icons[id], controller);
     }
 }
 

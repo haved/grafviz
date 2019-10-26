@@ -2,6 +2,9 @@ import { MenubarButton, GraphVizUI } from './ui-model';
 
 export class GraphVizController {
     public ui_model!: GraphVizUI;
+    /**
+     * This is effectivly our main entry point
+     */
     init_on_ui_model(ui_model:GraphVizUI) {
         this.ui_model = ui_model;
     }

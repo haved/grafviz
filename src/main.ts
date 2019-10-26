@@ -3,10 +3,8 @@ import './plugins/fontawesome'
 import App from './App.vue'
 Vue.config.productionTip = false
 
-function main() {
-  const instance = new Vue({
-    render: h => h(App),
-  }).$mount('#app');
-}
+new Vue({
+  render: h => h(App),
+}).$mount('#app');
 
-main();
+//The entry point for the apps code is in controller -> GraphVizController.init_on_ui_model()
