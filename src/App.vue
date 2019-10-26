@@ -14,6 +14,7 @@ import Menubar from './components/Menubar.vue';
 import Sidebar from './components/Sidebar.vue';
 
 import {GraphVizUI} from './ui-model';
+import {GraphVizController} from './controller';
 
 @Component({
   components: {
@@ -24,7 +25,7 @@ import {GraphVizUI} from './ui-model';
 export default class App extends Vue {
   data() {
     return {
-      ui_model: new GraphVizUI()
+      ui_model: new GraphVizUI(new GraphVizController())
     }
   }
 }

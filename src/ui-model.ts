@@ -1,4 +1,6 @@
-enum MenubarButton {
+import {GraphVizController} from './controller';
+
+export enum MenubarButton {
     Undo = 0,
     Redo,
     Pause,
@@ -16,10 +18,10 @@ export class MenubarButtonUI {
     enabled: boolean;
     toggled_off: boolean;
     hidden: boolean;
-    constructor(id: MenubarButton, icon_name: string, callback:(id:MenubarButton)=>any) {
+    constructor(id: MenubarButton, icon_name: string, controller: GraphVizController) {
         this.id = id;
         this.icon_name = icon_name;
-        this.callback = ()=>callback(id);
+        this.callback = ()=>controller.on_menubutton_clicked(id);
         this.enabled = true;
         this.toggled_off = false;
         this.hidden = false;
@@ -30,13 +32,11 @@ export class MenubarUI {
     current_structure_name: string;
     buttons_list: MenubarButtonUI[];
 
-    constructor(structure_name: string) {
+    constructor(structure_name: string, on_menubar_click:(id:MenubarButton)=>any) {
         this.current_structure_name = structure_name;
         this.buttons_list = [];
         for (let id = 0; id <= MenubarButton.Stop; id++)
-            this.buttons_list[id] = new MenubarButtonUI(id, menubar_icons[id], this.on_click.bind(this));
-    }
-    on_click(id: MenubarButton) {
+            this.buttons_list[id] = new MenubarButtonUI(id, menubar_icons[id], on_menubar_click);
     }
 }
 
@@ -67,9 +67,12 @@ export class SidebarUI {
 export class GraphVizUI {
     menubar: MenubarUI;
     sidebar: SidebarUI;
-    constructor() {
-        this.menubar = new MenubarUI("Graphviz");
+    controller: GraphVizController;
+    constructor(controller: GraphVizController) {
+        this.controller = controller;
+        this.menubar = new MenubarUI("Graphviz", controller);
         this.sidebar = new SidebarUI();
+        controller.init_on_ui_model(this);
     }
 }
   
