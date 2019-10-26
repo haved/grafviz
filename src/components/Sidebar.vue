@@ -31,9 +31,11 @@ export default class Sidebar extends Vue {
 .sidebar {
   flex-grow: 1;
   flex-shrink: 1;
-	display: flex;
   min-width: 30rem;
-  max-height: 100%;
+  flex-basis: 20%;
+
+	display: flex;
 	flex-direction: column;
+  overflow-y: auto;
 }
 </style>

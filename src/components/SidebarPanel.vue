@@ -1,16 +1,13 @@
 <template>
-  <div class="panel"
-  v-bind:class="{ open: !hidden, closed: hidden }">
+  <div class="panel">
     <div v-on:click="toggle" class="titlebar">{{title}}</div>
-    <div class="content codebg">
-      <div class="inner code">
-        Hei hei
-        <br>
-        hei på dei
-        a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>ba<br>da<br>ea<br>fa<br>aa<br>sa<br>sa<br>ea<br>
-      </div>
+    <div class="content codefont" :hidden="hidden">
+      Hei hei dette er en veldig lang linje, hva skjer?
+      <br>
+      hei på dei
+      a<br>a<br>a<br>a<br>a<br>a<br>a<br>a
     </div>
-  </div>    
+  </div>
 </template>
 
 <script lang="ts">
@@ -33,7 +30,7 @@ export default class SidebarPanel extends Vue {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  transition: flex-grow 0.2s;
+  transition: flex-basis 0.2s;
 }
 
 .titlebar {
@@ -52,30 +49,9 @@ export default class SidebarPanel extends Vue {
 }
 
 .content {
-  flex-grow: 1;
-  position: relative;
-}
-
-.inner {
-  position: absolute;
-  padding: 0.5rem;
-}
-
-/* These apply to the panel element itself */
-.open {
-  flex-grow: 10;
-  min-height: 10rem;
-}
-
-.closed {
-  flex-grow: 0;
-}
-
-.open>.content {
-  overflow: auto;
-}
-
-.closed>.content {
-  overflow: hidden;
+  font-size: 0.9rem;
+  background-color: #333;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 </style>

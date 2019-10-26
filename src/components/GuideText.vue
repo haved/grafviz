@@ -1,6 +1,6 @@
 <template>
-  <div class="guide codebgblue">
-    <div class="inner code">
+  <div class="guide">
+    <div class="inner codefont">
       <h2>Graphviz</h2>
       This website lets you visualize different graph based datastructures, and visually see the algorithms operating on the graphs.<br>
       At the top of the page you can choose the data structure of your choice.<br>
@@ -27,16 +27,8 @@ export default class GuideText extends Vue {}
 
 <style scoped lang="scss">
 .guide {
-  min-height: 2rem;
-	flex-grow: 1;
-	flex-shrink: 10;
+  flex-grow: 1;
 	z-index: 7;
-
-  overflow: auto;
-  position: relative;
-}
-
-.inner {
-  position: absolute;
+  background-color: #445;
 }
 </style>

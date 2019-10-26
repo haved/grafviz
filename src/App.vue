@@ -38,8 +38,7 @@ body, html {
 
 #app {
   width: 100%;
-  min-height: 100vh;
-  max-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -50,6 +49,7 @@ body, html {
   display:flex;
   flex-direction: column;
   align-items: stretch;
+  flex-basis: 80%;
 }
 
 #container {
@@ -68,21 +68,11 @@ body, html {
   }
   html, body, #app {
     overflow-y: auto;
-    max-height: auto;
+    height: auto;
   }
 }
 
-
-
-.codebg {
-  background-color: #333;
-}
-
-.codebgblue {
-  background-color: #445;
-}
-
-.code {
+.codefont {
   padding: 0.5rem;
   font-family: 'Courier New', Courier, monospace;
   line-height: 1.5rem;
