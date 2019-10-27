@@ -7,9 +7,9 @@ export enum MenubarButton {
     StepForward,
     Play,
     Faster,
-    Stop
+    _END_
 }
-const menubar_icons = ["undo-alt", "redo-alt", "pause", "step-forward", "play", "forward", "stop"];
+const menubar_icons = ["undo-alt", "redo-alt", "pause", "step-forward", "play", "forward", "cancel"];
 
 export class MenubarButtonUI {
     id: MenubarButton;
@@ -35,7 +35,7 @@ export class MenubarUI {
     constructor(structure_name: string, controller: GraphVizController) {
         this.current_structure_name = structure_name;
         this.buttons_list = [];
-        for (let id = 0; id <= MenubarButton.Stop; id++)
+        for (let id = 0; id < MenubarButton._END_; id++)
             this.buttons_list[id] = new MenubarButtonUI(id, menubar_icons[id], controller);
     }
 }

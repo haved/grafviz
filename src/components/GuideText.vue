@@ -4,7 +4,7 @@
       <span v-if="text==null">
       <h2>Graphviz</h2>
       This website lets you visualize different graph based datastructures, and visually see the algorithms operating on the graphs.<br>
-      At the top of the page you can choose the data structure of your choice.<br>
+      At the top of the page you can pick a data structure of your choice.<br>
       At the top of this sidebar there are 3 panels that give information about the current datastructure.
       <h3><font-awesome-icon icon="angle-right" size="sm"/> Node type</h3>
       This panel shows what data each node holds.
