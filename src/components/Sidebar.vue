@@ -1,10 +1,8 @@
 <template>
   <div class="sidebar">
-    <sidebar-panel
-    v-for="panel in panels"
-    v-bind:key="panel.id"
-    v-bind="panel">
-    </sidebar-panel>
+    <sidebar-panel title="Node type"></sidebar-panel>
+    <sidebar-panel title="Globals"></sidebar-panel>
+    <sidebar-panel title="Algorithms"></sidebar-panel>
     <guide-text :text="guide_text"></guide-text>
   </div>
 </template>
@@ -22,7 +20,6 @@ import GuideText from './GuideText.vue';
   }
 })
 export default class Sidebar extends Vue {
-  @Prop() private panels!: object[];
   @Prop() private guide_text!: object;
 }
 </script>

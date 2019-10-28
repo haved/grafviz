@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="menubar_and_container">
-      <menubar v-bind="ui_model.menubar"></menubar>
+      <menubar :graphviz="graphviz"></menubar>
       <div id="container"></div>
     </div>
-    <sidebar v-bind="ui_model.sidebar"></sidebar>
+    <sidebar v-bind="{graphviz}"></sidebar>
   </div>
 </template>
 
@@ -13,9 +13,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import Menubar from './components/Menubar.vue';
 import Sidebar from './components/Sidebar.vue';
 
-import {GraphVizUI} from './ui-model';
-import {GraphVizController} from './controller';
-
+import {GraphViz} from './graphviz';
 
 @Component({
   components: {
@@ -24,14 +22,12 @@ import {GraphVizController} from './controller';
   }
 })
 export default class App extends Vue {
-  data() {
-    return {
-      ui_model: new GraphVizUI(new GraphVizController())
-    }
-  }
+
+  graphviz = new GraphViz();
 
   mounted() {
-    this.$data.ui_model.controller.init_canvas(document.getElementById('container'));
+    const container = document.getElementById('container') as HTMLDivElement;
+    this.graphviz.start(container);
   }
 }
 </script>

@@ -18,6 +18,7 @@ import GuideText from './GuideText.vue';
 @Component
 export default class SidebarPanel extends Vue {
   @Prop() private title!: string;
+  
   hidden = true;
   toggle() {
     this.hidden = !this.hidden;

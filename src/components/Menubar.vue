@@ -1,15 +1,16 @@
 <template>
   <div class="menubar">
     <div class="buttons">
-      <menubar-button
-      v-for="button in buttons_list"
-      v-bind:key="button.id"
-      v-bind="button"
-      class="button"></menubar-button>
+      <menubar-button icon="undo-alt" :state="graphviz.undo_states.length!=0"></menubar-button>
+      <menubar-button icon="redo-alt" :state="graphviz.redo_states.length!=0"></menubar-button>
+      <menubar-button icon="pause" :state="graphviz.executing ? graphviz.running_speed = 0 : -1"></menubar-button>
+      <menubar-button icon="step-forward" .state=""></menubar-button>
+      <menubar-button icon="play" state="4"></menubar-button>
+      <menubar-button icon="forward" state="3"></menubar-button>
     </div>
     <div class="flexer"></div>
     <div class="structure_dropdown">
-      {{current_structure_name}}
+      {{graphviz.current_state.title}}
     </div>
   </div>
 </template>
@@ -18,13 +19,13 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import MenubarButton from './MenubarButton.vue';
+import {GraphViz} from '../graphviz';
 
 @Component({
   components: {MenubarButton}
 })
 export default class Menubar extends Vue {
-  @Prop() private current_structure_name!: string;
-  @Prop() private buttons_list!: object[];
+  @Prop() private graphviz!: GraphViz;
 }
 </script>
 
@@ -46,7 +47,7 @@ export default class Menubar extends Vue {
   font-size: 2rem;
 }
 
-.button {
+.buttons>* {
   margin: 0.4rem;
 }
 
