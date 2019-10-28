@@ -1,4 +1,5 @@
 import { MenubarButton, toggle, GraphVizUI } from './ui-model';
+import { CanvasController } from './canvas-controller';
 
 class State {
   
@@ -17,17 +18,25 @@ export class GraphVizController {
   redo_states: State[] = [];
 
   executing: boolean = false;
-  running_speed: number = 0; //0 is paused, 1 is playing, above is fast
+  running_speed: number = 0; //0 is paused, 1 is playing, above is faster
 
-  /**
-   * By the time this is called, the ui_model is set up, and is using us for all events
-   * This is effectivly our main entry point.
-   */
+  canvas_controller!: CanvasController;
+
+  //The ui_model is given as data to Vue, and is how we update the view
   init_on_ui_model(ui_model:GraphVizUI) {
     this.ui_model = ui_model;
     this.executing = true;
     this.show_state_change();
     this.update_menubar_buttons();
+  }
+
+  init_canvas(canvas:HTMLDivElement) {
+    this.canvas_controller = new CanvasController(canvas);
+    this.update();
+  }
+
+  update() {
+    requestAnimationFrame(this.update.bind(this));
   }
 
   show_state_change() {
