@@ -11,19 +11,29 @@ export enum MenubarButton {
 }
 const menubar_icons = ["undo-alt", "redo-alt", "pause", "step-forward", "play", "forward", "cancel"];
 
+enum ToggleState {
+    Off=-1,
+    NotToggle=0,
+    On=1
+}
+
+export function toggle(val:boolean) {
+    return val ? ToggleState.On : ToggleState.Off;
+}
+
 export class MenubarButtonUI {
     id: MenubarButton;
     icon_name: string;
     callback: ()=>any;
     enabled: boolean;
-    toggled_off: boolean;
+    toggled: ToggleState;
     hidden: boolean;
     constructor(id: MenubarButton, icon_name: string, controller: GraphVizController) {
         this.id = id;
         this.icon_name = icon_name;
         this.callback = ()=>controller.on_menubutton_clicked(id);
         this.enabled = true;
-        this.toggled_off = false;
+        this.toggled = ToggleState.NotToggle;
         this.hidden = false;
     }
 }

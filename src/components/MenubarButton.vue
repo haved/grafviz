@@ -1,7 +1,7 @@
 <template>
     <div class="button"
     :hidden="hidden"
-    v-bind:class="{toggled_off: toggled_off, toggled_on: !toggled_off, enabled:enabled, disabled:!enabled}"
+    v-bind:class="{toggled_on: toggled==1, toggled_off: toggled==-1, enabled:enabled, disabled:!enabled}"
     v-on:click="on_click">
         <font-awesome-icon :icon="icon_name"></font-awesome-icon>
     </div>
@@ -15,7 +15,7 @@ export default class MenubarButton extends Vue {
     @Prop() private icon_name!:string;
     @Prop() private callback!:()=>any;
     @Prop() private enabled!:boolean;
-    @Prop() private toggled_off!:boolean;
+    @Prop() private toggled!:number;
     @Prop() private hidden!:boolean;
 
     on_click() {
@@ -43,7 +43,7 @@ export default class MenubarButton extends Vue {
     color: #bbb;
 }
 
-.button.enabled.toggled_on:hover {
-    color: #bbb;
+.button.enabled.button.toggled_off:active {
+  color: white;
 }
 </style>
