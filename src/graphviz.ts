@@ -8,19 +8,19 @@ class State {
 }
 
 export class GraphViz {
-  current_state: State;
-  undo_states: State[] = [new State("Ollabolla -2"), new State("Heipådei -1")];
-  redo_states: State[] = [new State("Whaatt? Furure 2"), new State("Future 1")];
+  private _current_state: State;
+  private undo_states: State[] = [new State("Ollabolla -2"), new State("Heipådei -1")];
+  private redo_states: State[] = [new State("Whaatt? Furure 2"), new State("Future 1")];
 
-  executing: boolean;
-  running_speed: number;
+  private _executing: boolean;
+  private _running_speed: number;
 
   canvas_controller!: CanvasController;
 
   constructor() {
-    this.current_state = new State("Graphviz 0");
-    this.executing = false;
-    this.running_speed = 0;
+    this._current_state = new State("Graphviz 0");
+    this._executing = true;
+    this._running_speed = 0;
   }
 
   start(canvas:HTMLDivElement) {
@@ -33,29 +33,33 @@ export class GraphViz {
   }
 
   stop_execution() {
-    if(!this.executing)
-      return;
-    this.executing = false;
+    this._executing = false;
   }
 
+  get current_state():State { return this._current_state; }
+  get is_running():boolean { return this._executing; }
+  get running_speed():number { return this._running_speed; }
+
+  get can_undo():boolean { return this.undo_states.length != 0;}
   undo() {
     this.stop_execution();
     if(this.undo_states.length) {
       this.redo_states.push(this.current_state);
-      this.current_state = this.undo_states.pop()!;
+      this._current_state = this.undo_states.pop()!;
     }
   }
 
+  get can_redo():boolean {return this.redo_states.length != 0;}
   redo() {
     this.stop_execution();
     if(this.redo_states.length) {
       this.undo_states.push(this.current_state);
-      this.current_state = this.redo_states.pop()!;
+      this._current_state = this.redo_states.pop()!;
     }
   }
 
   pause() {
-    this.running_speed = 0;
+    this._running_speed = 0;
   }
 
   step() {
@@ -63,10 +67,10 @@ export class GraphViz {
   }
 
   play() {
-    this.running_speed = 1;
+    this._running_speed = 1;
   }
 
   faster() {
-    this.running_speed = Math.max(2, this.running_speed+1);
+    this._running_speed = Math.max(2, this.running_speed+1);
   }
 }
