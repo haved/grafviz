@@ -14,7 +14,7 @@
         :enabled="graphviz.running_speed != 0"></menubar-button>
       <menubar-button icon="play"
         :callback="graphviz.play.bind(graphviz)"
-        :enabled="graphviz.running_speed == 0"></menubar-button>
+        :enabled="graphviz.running_speed != 1"></menubar-button>
       <menubar-button icon="forward"
         :callback="graphviz.faster.bind(graphviz)"
         :enabled="graphviz.running_speed != 0"></menubar-button>

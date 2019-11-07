@@ -22,7 +22,6 @@ import {GraphViz} from './graphviz';
   }
 })
 export default class App extends Vue {
-
   graphviz = new GraphViz();
 
   mounted() {

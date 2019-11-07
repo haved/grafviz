@@ -12,15 +12,13 @@ export class GraphViz {
   private undo_states: State[] = [new State("Ollabolla -2"), new State("Heipådei -1")];
   private redo_states: State[] = [new State("Whaatt? Furure 2"), new State("Future 1")];
 
-  private _executing: boolean;
-  private _running_speed: number;
+  private _executing: boolean = false;
+  private _running_speed: number = 0;
 
   canvas_controller!: CanvasController;
 
   constructor() {
     this._current_state = new State("Graphviz 0");
-    this._executing = true;
-    this._running_speed = 0;
   }
 
   start(canvas:HTMLDivElement) {
