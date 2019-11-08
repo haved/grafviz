@@ -32,9 +32,11 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+@import "./scss/_variables.scss";
+
 html {
-  overflow: hidden;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  overflow: hidden;
 }
 
 body, html {
@@ -43,38 +45,38 @@ body, html {
 }
 
 #app {
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  height: 100vh;
 }
 
 .menubar_and_container {
-  flex-grow: 10;
+  min-height: 100vh;
+  flex-basis: $canvas-flex-basis;
+  min-width: $min-canvas-width;
+
   display:flex;
   flex-direction: column;
   align-items: stretch;
-  flex-basis: 80%;
 }
 
 #container {
   background-color: #eeeeee;
   flex-grow: 1;
-  min-width: 300px;
-  min-height: 300px;
 }
 
 /**
  * On screens smaller than or equal to this, we put the sidebar bellow and allow scrolling down
  */
-@media screen and (max-width: 70rem) {
+@media screen and (max-width: $wrap-width) {
   #app {
     flex-direction: column;
-  }
-  html, body, #app {
-    overflow-y: auto;
     height: auto;
+    font-size: 0.8rem;
+  }
+  html {
+    overflow-y: auto;
   }
 }
 

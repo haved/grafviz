@@ -25,15 +25,14 @@ export default class Sidebar extends Vue {
 </script>
 
 <style scoped lang="scss">
-.sidebar {
-  flex-grow: 1;
-  flex-shrink: 1;
-  min-width: 5rem;
-  overflow-x: auto; //If the screen is tiny
-  flex-basis: 25%;
+@import "../scss/_variables.scss";
 
-	display: flex;
-	flex-direction: column;
+.sidebar {
+  min-width: $min-sidebar-width;
+  flex-basis: $sidebar-flex-basis;
+
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
 }
 </style>

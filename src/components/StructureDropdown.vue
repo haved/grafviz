@@ -35,7 +35,7 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables.scss";
+@import "../scss/_variables.scss";
 
 $hover-tint: #0006;
 

@@ -19,6 +19,7 @@
     "vue-property-decorator": "^8.3.0"
   },
   "devDependencies": {
+    "@types/jquery": "^3.3.31",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
     "@vue/cli-plugin-typescript": "^4.0.0",
@@ -28,10 +29,9 @@
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
-    "typescript": "~3.5.3",
+    "typescript": "^3.7.2",
     "vue-cli-plugin-fontawesome": "^0.2.0",
-    "vue-template-compiler": "^2.6.10",
-    "@types/jquery": "^3.3.31"
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,

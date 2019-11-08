@@ -50,13 +50,14 @@ export class GraphViz {
 
   get state():State { return this._state; }
   set state(state:State) {
+    this.redo_states = [];
+    this.undo_states.push(this.state);
     this._state = state;
   }
   get type():GraphType { return this.state.type; }
   get types():GraphType[] { return graph_types; }
 
   set_graph_type(type:GraphType) {
-    this.undo_states.push(this.state);
     this.state = new State(type);
   }
 
@@ -67,7 +68,7 @@ export class GraphViz {
   undo() {
     if(this.undo_states.length) {
       this.redo_states.push(this.state);
-      this.state = this.undo_states.pop()!;
+      this._state = this.undo_states.pop()!;
     }
   }
 
@@ -75,7 +76,7 @@ export class GraphViz {
   redo() {
     if(this.redo_states.length) {
       this.undo_states.push(this.state);
-      this.state = this.redo_states.pop()!;
+      this._state = this.redo_states.pop()!;
     }
   }
 

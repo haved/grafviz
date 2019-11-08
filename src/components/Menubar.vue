@@ -43,7 +43,7 @@ export default class Menubar extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import "../scss/variables.scss";
+@import "../scss/_variables.scss";
 
 .menubar {
   display: flex;
