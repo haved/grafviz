@@ -1,6 +1,8 @@
 <template>
-    <div class="dropdown">
-        <div class="selected">
+    <div class="dropdown"
+    v-bind:class="{open}">
+        <div class="selected"
+        v-on:click="toggle()">
             <font-awesome-icon icon="caret-down"></font-awesome-icon>
             {{graphviz.type.title}}
         </div>
@@ -26,7 +28,14 @@ import $ from 'jquery';
 export default class extends Vue {
     @Prop() graphviz!:GraphViz;
 
+    open : boolean = false;
+
+    toggle() {
+        this.open = !this.open;
+    }
+
     choose(type:GraphType) {
+        this.open = false;
         if(type == this.graphviz.type)
             return;
         this.graphviz.set_graph_type(type);
@@ -37,7 +46,9 @@ export default class extends Vue {
 <style lang="scss" scoped>
 @import "../scss/_variables.scss";
 
-$hover-tint: #0006;
+$hover-tint: #FFF4;
+$open-tint: #0006;
+$selected-tint: #0003;
 
 .dropdown {
 	position: relative;
@@ -56,11 +67,15 @@ $hover-tint: #0006;
     bottom: 0;
 }
 
-.dropdown:hover {
+.dropdown:not(.open):hover {
     background-color: $hover-tint;
+}
+
+.dropdown.open {
+    background-color: $open-tint;
     .chooser {
         display: flex;
-    }   
+    }
 }
 
 .chooser {
@@ -86,7 +101,7 @@ $hover-tint: #0006;
 }
 
 .item.selected {
-    background-color: $hover-tint;
+    background-color: $selected-tint;
 }
 
 </style>

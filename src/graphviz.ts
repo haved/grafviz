@@ -1,37 +1,33 @@
 import { CanvasController } from './canvas-controller';
-
-export class GraphType {
-  index: number;
-  title: string;
-  constructor(index:number, title: string) {
-    this.index = index;
-    this.title = title;
-  }
-}
-
-let i = 0;
-const BLANK_GRAPH_TYPE = new GraphType(i++, "Graphviz");
-const TREEP = new GraphType(i++, "Treep");
-const MAXFLOW = new GraphType(i++, "Maxflow");
-const BINTREE = new GraphType(i++, "Binary search tree");
-const RBTREE = new GraphType(i++, "Red black tree");
-
-const graph_types = [TREEP, MAXFLOW, BINTREE, RBTREE];
+import { GraphType, BLANK_GRAPH_TYPE, GRAPH_TYPES } from './graphtype';
 
 export class State {
   type: GraphType;
   executing: boolean=false;
   running_speed: number=0;
 
+  globals: object;
+  nodes: object[];
+
   constructor(type: GraphType) {
     this.type = type;
+    this.globals = type.make_globals();
+    this.nodes = type.default_nodes();
+  }
+
+  deepcopy():State {
+    return {
+      type: this.type,
+      globals: JSON.parse(JSON.stringify(this.globals)),
+      nodes: JSON.parse(JSON.stringify(this.nodes))
+    } as State;
   }
 }
 
 export class GraphViz {
   private _state: State;
-  private undo_states: State[] = [];
-  private redo_states: State[] = [];
+  private _undo_states: State[] = [];
+  private _redo_states: State[] = [];
 
   canvas_controller!: CanvasController;
 
@@ -40,45 +36,47 @@ export class GraphViz {
   }
 
   start(canvas:HTMLDivElement) {
-    this.canvas_controller = new CanvasController(canvas);
+    this.canvas_controller = new CanvasController(canvas, this);
     this.update();
   }
 
   update() {
+    this.canvas_controller.update();
     requestAnimationFrame(this.update.bind(this));
   }
 
-  get state():State { return this._state; }
-  set state(state:State) {
-    this.redo_states = [];
-    this.undo_states.push(this.state);
-    this._state = state;
+  get state() { return this._state; }
+  set state(state: State) { this._state = state; }
+  push_state_to_undo() {
+    this._undo_states.push(this.state.deepcopy());
+    this._redo_states = [];
   }
-  get type():GraphType { return this.state.type; }
-  get types():GraphType[] { return graph_types; }
 
+  get type():GraphType { return this.state.type; }
+  get types():GraphType[] { return GRAPH_TYPES; }
   set_graph_type(type:GraphType) {
+    this.push_state_to_undo();
     this.state = new State(type);
+  }
+
+  get can_undo():boolean { return this._undo_states.length != 0;}
+  undo() {
+    if(this._undo_states.length) {
+      this._redo_states.push(this.state);
+      this.state = this._undo_states.pop()!;
+    }
+  }
+
+  get can_redo():boolean {return this._redo_states.length != 0;}
+  redo() {
+    if(this._redo_states.length) {
+      this._undo_states.push(this.state);
+      this.state = this._redo_states.pop()!;
+    }
   }
 
   get is_executing():boolean { return this.state.executing; }
   get running_speed():number { return this.state.running_speed; }
-
-  get can_undo():boolean { return this.undo_states.length != 0;}
-  undo() {
-    if(this.undo_states.length) {
-      this.redo_states.push(this.state);
-      this._state = this.undo_states.pop()!;
-    }
-  }
-
-  get can_redo():boolean {return this.redo_states.length != 0;}
-  redo() {
-    if(this.redo_states.length) {
-      this.undo_states.push(this.state);
-      this._state = this.redo_states.pop()!;
-    }
-  }
 
   pause() {
     this.state.running_speed = 0;

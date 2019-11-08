@@ -1,10 +1,13 @@
 import Konva from 'konva';
+import { GraphViz } from './graphviz';
 
 export class CanvasController {
+    graphviz: GraphViz;
     stage: Konva.Stage;
     node_layer: Konva.Layer;
 
-    constructor(container: HTMLDivElement) {
+    constructor(container: HTMLDivElement, graphviz: GraphViz) {
+        this.graphviz = graphviz;
         this.stage = new Konva.Stage({
             container: container,
             width: container.offsetWidth,
@@ -23,5 +26,10 @@ export class CanvasController {
             strokeWidth: 4
         }));
         this.node_layer.draw();
+    }
+
+    update() {
+        const state = this.graphviz.state;
+        
     }
 }
