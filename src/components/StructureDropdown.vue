@@ -8,7 +8,8 @@
         </div>
         <div class="chooser">
             <div class="item"
-            v-for="type in graphviz.types" :key="type.index"
+            v-for="(type, index) in graphviz.types"
+            :key="index"
             v-bind:class="{selected: type == graphviz.type}"
             v-on:click="choose(type)">
                 {{type.title}}
@@ -21,7 +22,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { GraphViz, GraphType } from '../graphviz';
+import { GraphViz } from '../graphviz';
+import { GraphType } from '../graphtype';
 import $ from 'jquery';
 
 @Component

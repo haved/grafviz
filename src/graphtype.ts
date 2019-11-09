@@ -1,18 +1,57 @@
-export class GraphType {
-    index: number;
-    title: string;
-    constructor(index:number, title: string) {
-      this.index = index;
-      this.title = title;
-    }
+export class GlobalDesc {
+}
+
+export class NodeField {
+}
+
+export class Algorithm {
+}
+
+type Defaults = {globals:object, nodes:object[]};
+
+export abstract class GraphType {
+  title: string;
+  description:string;
+  node_fields: NodeField[];
+  global_descs: GlobalDesc[];
+  algorithms: Algorithm[];
+
+  constructor(title: string, description: string) {
+    this.title = title;
+    this.description = description;
+    this.node_fields = this.make_node_fields();
+    this.global_descs = this.make_global_descs();
+    this.algorithms = this.make_algorithms();
   }
 
-let i = 0;
-export const BLANK_GRAPH_TYPE = new GraphType(i++, "Graphviz");
-const TREEP = new GraphType(i++, "Treep");
-const MAXFLOW = new GraphType(i++, "Maxflow");
-const BINTREE = new GraphType(i++, "Binary search tree");
-const RBTREE = new GraphType(i++, "Red black tree");
+  abstract make_node_fields(): NodeField[];
+  abstract make_global_descs(): GlobalDesc[];
+  abstract make_algorithms(): Algorithm[];
+  abstract make_defaults():Defaults;
+}
 
-export const GRAPH_TYPES = [TREEP, MAXFLOW, BINTREE, RBTREE];
-  
+class InfoGraphType extends GraphType {
+
+  constructor() {
+    super("Graphviz", "_graphviz");
+  }
+
+  make_node_fields(): NodeField[] {
+    throw new Error("Method not implemented.");
+  }
+  make_global_descs(): GlobalDesc[] {
+    throw new Error("Method not implemented.");
+  }
+  make_algorithms(): Algorithm[] {
+    throw new Error("Method not implemented.");
+  }
+  make_defaults(): Defaults {
+    return {
+      globals: {},
+      nodes: []
+    };
+  }
+}
+
+export const DEFAULT_GRAPH_TYPE = new InfoGraphType();
+export const GRAPH_TYPES = [];

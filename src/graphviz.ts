@@ -1,28 +1,8 @@
 import { CanvasController } from './canvas-controller';
-import { GraphType, BLANK_GRAPH_TYPE, GRAPH_TYPES } from './graphtype';
+import { GraphType, GRAPH_TYPES, DEFAULT_GRAPH_TYPE } from './graphtype';
+import { State } from './state';
 
-export class State {
-  type: GraphType;
-  executing: boolean=false;
-  running_speed: number=0;
-
-  globals: object;
-  nodes: object[];
-
-  constructor(type: GraphType) {
-    this.type = type;
-    this.globals = type.make_globals();
-    this.nodes = type.default_nodes();
-  }
-
-  deepcopy():State {
-    return {
-      type: this.type,
-      globals: JSON.parse(JSON.stringify(this.globals)),
-      nodes: JSON.parse(JSON.stringify(this.nodes))
-    } as State;
-  }
-}
+const MAX_UNDO_HISTORY = 100;
 
 export class GraphViz {
   private _state: State;
@@ -32,7 +12,7 @@ export class GraphViz {
   canvas_controller!: CanvasController;
 
   constructor() {
-    this._state = new State(BLANK_GRAPH_TYPE);
+    this._state = State.default_for_type(DEFAULT_GRAPH_TYPE);
   }
 
   start(canvas:HTMLDivElement) {
@@ -49,6 +29,8 @@ export class GraphViz {
   set state(state: State) { this._state = state; }
   push_state_to_undo() {
     this._undo_states.push(this.state.deepcopy());
+    while(this._undo_states.length > MAX_UNDO_HISTORY)
+      this._undo_states.shift();
     this._redo_states = [];
   }
 
@@ -56,7 +38,7 @@ export class GraphViz {
   get types():GraphType[] { return GRAPH_TYPES; }
   set_graph_type(type:GraphType) {
     this.push_state_to_undo();
-    this.state = new State(type);
+    this.state = State.default_for_type(type);
   }
 
   get can_undo():boolean { return this._undo_states.length != 0;}

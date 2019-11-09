@@ -3,7 +3,7 @@
     <sidebar-panel title="Node type"></sidebar-panel>
     <sidebar-panel title="Globals"></sidebar-panel>
     <sidebar-panel title="Algorithms"></sidebar-panel>
-    <guide-text :text="guide_text"></guide-text>
+    <guide-text :text="graphviz.type.description"></guide-text>
   </div>
 </template>
 
@@ -12,6 +12,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import SidebarPanel from './SidebarPanel.vue';
 import GuideText from './GuideText.vue';
+import { GraphViz } from '../graphviz';
 
 @Component({
   components: {
@@ -20,7 +21,7 @@ import GuideText from './GuideText.vue';
   }
 })
 export default class Sidebar extends Vue {
-  @Prop() private guide_text!: object;
+  @Prop() private graphviz!: GraphViz;
 }
 </script>
 
