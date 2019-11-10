@@ -33,7 +33,7 @@ export default class App extends Vue {
 
 <style lang="scss">
 @import "./scss/_variables.scss";
-@import './scss/code.scss';
+@import '@/scss/code.scss';
 
 html {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

@@ -76,5 +76,4 @@ export default class SidebarPanel extends Vue {
 .plain-line {
   padding: $code-line-pad;
 }
-
 </style>

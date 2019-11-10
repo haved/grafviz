@@ -5,21 +5,37 @@
     color: #EEEEEE;
 }
 
+.number {
+    color: #7AF;
+}
+
+.literal {
+    color: rgb(163, 63, 63);
+    font-weight: 600;
+}
+
 .control_keyword {
     color: #66A;
+}
+
+.keyword {
+    color: #6BF;
     font-weight: 600;
 }
 
 .field {
-    color: #6AA;
+    color: rgb(86, 208, 245);
 }
 
 .plain_type {
     color: #44A;
-    font-weight: 600;
 }
 
 .keyword_type {
-    color: #A44;
+    color: rgb(211, 51, 51);
+    font-weight: 600;
+}
+
+.optional, .colon {
     font-weight: 600;
 }

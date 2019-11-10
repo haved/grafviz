@@ -1,24 +1,24 @@
-import {CodeText, chain, code, css_class} from '@/pseudocode';
+import * as PC from '@/pseudocode';
 
 export class GlobalDesc {
 }
 
 export class NodeField {
   title: string;
-  type: CodeText;
-  init?: CodeText;
+  type: PC.CodeText;
+  init?: PC.CodeText;
 
-  constructor(title: string, type: CodeText, init?: CodeText) {
+  constructor(title: string, type: PC.CodeText, init?: PC.CodeText) {
     this.title = title;
     this.type = type;
     this.init = init;
   }
 
-  to_codetext():CodeText {
-    let result = chain(css_class(code(this.title), "field"), ":", this.type);
+  to_codetext():PC.CodeText {
+    let result = PC.chain(PC.field(this.title), PC.type_colon, this.type);
     if(this.init)
-      result = chain(result, " = ", this.init);
-    return chain(result, ";");
+      result = PC.chain(result, PC.spaced_assignment, this.init);
+    return PC.chain(result, PC.semicolon);
   }
 }
 
