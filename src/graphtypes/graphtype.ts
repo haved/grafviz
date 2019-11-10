@@ -1,4 +1,4 @@
-import {CodeText, chain} from '@/pseudocode';
+import {CodeText, chain, code, css_class} from '@/pseudocode';
 
 export class GlobalDesc {
 }
@@ -15,7 +15,7 @@ export class NodeField {
   }
 
   to_codetext():CodeText {
-    let result = chain(this.title, ":", this.type);
+    let result = chain(css_class(code(this.title), "field"), ":", this.type);
     if(this.init)
       result = chain(result, " = ", this.init);
     return chain(result, ";");

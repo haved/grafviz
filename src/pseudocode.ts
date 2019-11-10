@@ -24,11 +24,11 @@ export function code(text: string) {
 }
 
 export function css_class(code: CodeText, css_class:string) {
-  return CodeText.of_html("<span class=${css_class}>${code.html}</span>");
+  return CodeText.of_html(`<span class=${css_class}>${code.html}</span>`);
 }
 
 export function bold(code: CodeText) {
-  return CodeText.of_html("<b>${code.html}</b>");
+  return CodeText.of_html(`<b>${code.html}</b>`);
 }
 
 export function chain(...args: (CodeText|string)[]):CodeText {

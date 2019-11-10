@@ -13,7 +13,7 @@ export default class Treep extends GraphType {
   
   make_node_fields(): NodeField[] {
     return [
-      new NodeField("random", type_u64, code("random()"))
+      new NodeField("random", type_u64, code("rand()"))
     ];
   }
   make_global_descs(): GlobalDesc[] {

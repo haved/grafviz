@@ -33,6 +33,7 @@ export default class App extends Vue {
 
 <style lang="scss">
 @import "./scss/_variables.scss";
+@import './scss/code.scss';
 
 html {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -80,10 +81,4 @@ body, html {
   }
 }
 
-.codefont {
-  font-family: 'Courier New', Courier, monospace;
-  line-height: 1.5rem;
-  font-weight: 600;
-  color: #EEEEEE;
-}
 </style>

@@ -32,9 +32,16 @@ export default class GuideText extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import '@/scss/_variables.scss';
+
 .guide {
   flex-grow: 1;
 	z-index: 7;
   background-color: #445;
+  padding: $code-line-pad;
+}
+
+.inner>* {
+  font-weight: 600;
 }
 </style>
