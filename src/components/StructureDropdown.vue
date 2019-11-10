@@ -3,7 +3,7 @@
     v-bind:class="{open}">
         <div class="selected"
         v-on:click="toggle()">
-            <font-awesome-icon icon="caret-down"></font-awesome-icon>
+            <font-awesome-icon icon="caret-down"/>
             {{graphviz.type.title}}
         </div>
         <div class="chooser">
@@ -22,8 +22,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { GraphViz } from '../graphviz';
-import { GraphType } from '../graphtypes/graphtype';
+import GraphViz from '@/graphviz';
+import GraphType from '@/graphtypes/graphtype';
 import $ from 'jquery';
 
 @Component
@@ -46,7 +46,7 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import "@/scss/_variables.scss";
 
 $hover-tint: #FFF4;
 $open-tint: #0006;

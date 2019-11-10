@@ -4,7 +4,7 @@
       disabled:!enabled,
       enabled:enabled}"
     v-on:click="on_click">
-        <font-awesome-icon :icon="icon"></font-awesome-icon>
+        <font-awesome-icon :icon="icon"/>
     </div>
 </template>
 

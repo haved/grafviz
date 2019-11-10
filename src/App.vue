@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="menubar_and_container">
-      <menubar :graphviz="graphviz"></menubar>
+      <menubar :graphviz="graphviz"/>
       <div id="container"></div>
     </div>
-    <sidebar v-bind="{graphviz}"></sidebar>
+    <sidebar v-bind="{graphviz}"/>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import Menubar from './components/Menubar.vue';
 import Sidebar from './components/Sidebar.vue';
 
-import {GraphViz} from './graphviz';
+import GraphViz from './graphviz';
 
 @Component({
   components: {
@@ -81,7 +81,6 @@ body, html {
 }
 
 .codefont {
-  padding: 0.5rem;
   font-family: 'Courier New', Courier, monospace;
   line-height: 1.5rem;
   font-weight: 600;

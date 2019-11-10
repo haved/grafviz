@@ -1,25 +1,24 @@
-import CodeText, {chainMixed} from '../psuedocode/codetext';
-import Type from "../psuedocode/type"
+import {CodeText, chain} from '@/pseudocode';
 
 export class GlobalDesc {
 }
 
 export class NodeField {
   title: string;
-  type: Type;
+  type: CodeText;
   init?: CodeText;
 
-  constructor(title: string, type: Type, init?: CodeText) {
+  constructor(title: string, type: CodeText, init?: CodeText) {
     this.title = title;
     this.type = type;
     this.init = init;
   }
 
   to_codetext():CodeText {
-    let result = chainMixed(this.title, ":", this.type.to_codetext());
+    let result = chain(this.title, ":", this.type);
     if(this.init)
-      result = chainMixed(result, " = ", this.init);
-    return result;
+      result = chain(result, " = ", this.init);
+    return chain(result, ";");
   }
 }
 

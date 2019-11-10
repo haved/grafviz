@@ -4,11 +4,11 @@
       <font-awesome-icon icon="angle-right" v-if="hidden"/>
       <font-awesome-icon icon="angle-down" v-else/>
       {{title}}</div>
-    <div class="content codefont" :hidden="hidden">
-      Hei hei dette er en veldig lang linje, hva skjer?
-      <br>
-      hei på dei
-      a<br>a<br>a<br>a<br>a<br>a<br>a<br>a
+    <div class="content codefont" v-if="!hidden">
+      <div v-for="(line, index) in lines" :key="index">
+        <span class="plain-line" v-if="is_code(line)" v-html="line.html"/> 
+        <toggle-line :line="line" v-else/>
+      </div>
     </div>
   </div>
 </template>
@@ -16,25 +16,34 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-import GuideText from './GuideText.vue';
+import ToggleLine from './ToggleLine.vue';
+import { CodeText } from '../pseudocode';
 
-@Component
+@Component({
+  components: { ToggleLine }
+})
 export default class SidebarPanel extends Vue {
   @Prop() private title!: string;
+  @Prop() private lines!: any[];
   
   hidden = true;
   toggle() {
     this.hidden = !this.hidden;
   }
+
+  is_code(object:any|CodeText) {
+    return object instanceof CodeText;
+  }
 }
 </script>
 
 <style scoped lang="scss">
+@import "@/scss/_variables.scss";
+
 .panel {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  transition: flex-basis 0.2s;
 }
 
 .titlebar {
@@ -54,9 +63,18 @@ export default class SidebarPanel extends Vue {
 }
 
 .content {
+  padding: .5rem 0;
   font-size: 0.9rem;
   background-color: #333;
   white-space: nowrap;
   overflow-x: auto;
+  display:flex;
+  flex-direction: column;
+  align-items: stretch;
 }
+
+.plain-line {
+  padding: $code-line-pad;
+}
+
 </style>

@@ -1,4 +1,5 @@
 import GraphType, { NodeField, GlobalDesc, Algorithm, Defaults } from './graphtype';
+import { type_u64, code } from '@/pseudocode';
 
 const text = `\
 <h2>Treep</h2>
@@ -11,7 +12,9 @@ export default class Treep extends GraphType {
   }
   
   make_node_fields(): NodeField[] {
-    return [];
+    return [
+      new NodeField("random", type_u64, code("random()"))
+    ];
   }
   make_global_descs(): GlobalDesc[] {
     return [];
