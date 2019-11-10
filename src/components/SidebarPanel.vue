@@ -1,6 +1,9 @@
 <template>
   <div class="panel">
-    <div v-on:click="toggle" class="titlebar">{{title}}</div>
+    <div v-on:click="toggle" class="titlebar">
+      <font-awesome-icon icon="angle-right" v-if="hidden"/>
+      <font-awesome-icon icon="angle-down" v-else/>
+      {{title}}</div>
     <div class="content codefont" :hidden="hidden">
       Hei hei dette er en veldig lang linje, hva skjer?
       <br>
@@ -43,6 +46,7 @@ export default class SidebarPanel extends Vue {
   font-weight: 200;
   box-shadow: 0px 2px 3px #66666666;
   z-index: 5;
+  cursor: pointer;
 }
 
 .titlebar:hover {

@@ -1,10 +1,11 @@
-import { CanvasController } from './canvas-controller';
-import { GraphType, GRAPH_TYPES, DEFAULT_GRAPH_TYPE } from './graphtype';
-import { State } from './state';
+import CanvasController from './canvas-controller';
+import GraphType from './graphtypes/graphtype';
+import { DEFAULT_GRAPH_TYPE, GRAPH_TYPES } from './graphtypes/all_graphtypes';
+import State from './state';
 
 const MAX_UNDO_HISTORY = 100;
 
-export class GraphViz {
+export default class GraphViz {
   private _state: State;
   private _undo_states: State[] = [];
   private _redo_states: State[] = [];

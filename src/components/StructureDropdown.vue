@@ -23,7 +23,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { GraphViz } from '../graphviz';
-import { GraphType } from '../graphtype';
+import { GraphType } from '../graphtypes/graphtype';
 import $ from 'jquery';
 
 @Component
@@ -55,7 +55,8 @@ $selected-tint: #0003;
 .dropdown {
 	position: relative;
     font-size: 2rem;
-	font-weight: 500;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .selected {

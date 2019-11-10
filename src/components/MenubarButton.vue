@@ -31,6 +31,7 @@ export default class MenubarButton extends Vue {
 
 .button.enabled {
   color: white;
+  cursor: pointer;
 }
 
 .button.enabled:hover {

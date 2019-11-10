@@ -17,9 +17,7 @@
         Click one to expand it, and click again to put it on the execute-bar.
         Here you can also see the algorithm as it executes.
       </span>
-      <span v-else>
-        {{text}}
-      </span>
+      <span v-else v-html="text"/>
     </div>
   </div>
 </template>

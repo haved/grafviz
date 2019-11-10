@@ -1,6 +1,6 @@
-import { GraphType } from './graphtype';
+import GraphType from './graphtypes/graphtype';
 
-export class State {
+export default class State {
   type: GraphType;
   executing: boolean=false;
   running_speed: number=0;
