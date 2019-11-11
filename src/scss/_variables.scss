@@ -1,4 +1,6 @@
-$bg-menubar: #a4a;
+$bg-menubar: /*rgb(177, 104, 177)*/#a4a;
+$sidebar-title-color: /*rgb(101, 156, 84)*/#4a4;
+$sidebar-title-color-disabled: #454;
 
 $canvas-flex-basis: 75%;
 $min-canvas-width: 18rem;
@@ -6,6 +8,6 @@ $min-canvas-width: 18rem;
 $sidebar-flex-basis: 25%;
 $min-sidebar-width: 18rem;
 
-$wrap-width: 50rem; //How small before we show the sidebar bellow
+$wrap-width: 50rem; //How small before we show the sidebar bellowfilter: sepia(10%);
 
 $code-line-pad: 0 .5rem;

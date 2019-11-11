@@ -1,10 +1,10 @@
 <template>
   <div class="panel">
-    <div v-on:click="toggle" class="titlebar">
-      <font-awesome-icon icon="angle-right" v-if="hidden"/>
+    <div v-on:click="toggle" class="titlebar" :class="{disabled: empty()}">
+      <font-awesome-icon icon="angle-right" v-if="hidden || empty()"/>
       <font-awesome-icon icon="angle-down" v-else/>
       {{title}}</div>
-    <div class="content codefont" v-if="!hidden">
+    <div class="content codefont" v-if="!hidden && !empty()">
       <div v-for="(line, index) in lines" :key="index">
         <span class="plain-line" v-if="is_code(line)" v-html="line.html"/> 
         <toggle-line :line="line" v-else/>
@@ -28,11 +28,16 @@ export default class SidebarPanel extends Vue {
   
   hidden = true;
   toggle() {
-    this.hidden = !this.hidden;
+    if(!this.empty())
+      this.hidden = !this.hidden;
   }
 
   is_code(object:any|CodeText) {
     return object instanceof CodeText;
+  }
+
+  empty() {
+    return this.lines.length == 0;
   }
 }
 </script>
@@ -49,7 +54,7 @@ export default class SidebarPanel extends Vue {
 .titlebar {
   margin: 0;
   padding: 0.7rem;
-  background-color: #4a4;
+  background-color: $sidebar-title-color;
   color: white;
   font-size: 1.4rem;
   font-weight: 200;
@@ -58,7 +63,13 @@ export default class SidebarPanel extends Vue {
   cursor: pointer;
 }
 
-.titlebar:hover {
+.titlebar.disabled {
+  background-color: $sidebar-title-color-disabled;
+  color: #777;
+  cursor: inherit;
+}
+
+.titlebar:not(.disabled):hover {
   background-color: #5b5;
 }
 
@@ -74,6 +85,7 @@ export default class SidebarPanel extends Vue {
 }
 
 .plain-line {
+  display: block;
   padding: $code-line-pad;
 }
 </style>

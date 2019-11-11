@@ -27,7 +27,7 @@ export default class Sidebar extends Vue {
     return this.graphviz.type.node_fields.map(field=>field.to_codetext())
   }
   globals_lines():any {
-    return this.graphviz.type.node_fields.map(field=>field.to_codetext())
+    return this.graphviz.type.global_descs.map(desc=>desc.to_codetext())
   }
   algorithms_lines():any {
     return this.graphviz.type.node_fields.map(field=>field.to_codetext())

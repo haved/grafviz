@@ -2,7 +2,7 @@ import GraphType, { NodeField, GlobalDesc, Algorithm, Defaults } from './graphty
 
 export default class InfoGraphType extends GraphType {
   constructor() {
-    super("Graphviz", "_graphviz");
+    super("Choose", "_graphviz");
   }
   
   make_node_fields(): NodeField[] {

@@ -42,6 +42,7 @@ export default class ToggleLine extends Vue {
 }
 
 .inner-line, .main-line {
+  display: block;
   padding: $code-line-pad;
 }
 
