@@ -1,4 +1,4 @@
-# Graphviz
+# Grafviz
 
 A website for visualizing a few different graph based data structures and algorithms.  
 Built using Vue and Typescript.

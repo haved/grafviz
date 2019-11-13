@@ -3,7 +3,8 @@
     <div v-on:click="toggle" class="main-line">
       <font-awesome-icon icon="angle-down" v-if="line.shown"/>
       <font-awesome-icon icon="angle-right" v-else/>
-      {{line.title}}</div>
+      <span v-html="line.title.html"/>
+    </div>
     <div class="body" v-if="line.shown">
       <div class="inner-line"
       v-for="(inner, index) in line.content"
@@ -17,7 +18,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { CodeText } from '@/pseudocode';
 
-type ToggleLineData = {title:string, content: CodeText[], shown:boolean};
+export type ToggleLineData = {title:CodeText, content: CodeText[], shown:boolean};
 
 @Component
 export default class ToggleLine extends Vue {

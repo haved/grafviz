@@ -1,8 +1,5 @@
 import * as PC from '@/pseudocode';
 
-export class GlobalDesc {
-}
-
 export class NodeField {
   title: string;
   type: PC.CodeText;
@@ -22,7 +19,54 @@ export class NodeField {
   }
 }
 
+export class GlobalDesc {
+  title: string;
+  initializer: PC.CodeText;
+  creator_function:()=>any;
+
+  constructor(title: string, initializer: PC.CodeText, creator_function:()=>any) {
+    this.title = title;
+    this.initializer = initializer;
+    this.creator_function = creator_function;
+  }
+  
+  to_codetext():PC.CodeText {
+    return PC.chain(PC.global(this.title), ":= ", this.initializer, ";");
+  }
+}
+
+export class Parameter {
+  name: string;
+  type: PC.CodeText;
+
+  constructor(name: string, type: PC.CodeText) {
+    this.name = name;
+    this.type = type;
+  }
+
+  to_codetext() {
+    return PC.chain(PC.parameter(this.name), ": ", this.type);
+  }
+}
+
 export class Algorithm {
+  name: string;
+  parameteres: Parameter[];
+  shown: boolean = true;
+
+  constructor(name: string, parameters: Parameter[]) {
+    this.name = name;
+    this.parameteres = parameters;
+  }
+
+  to_signature_codetext():PC.CodeText {
+    let result = PC.chain(PC.func(this.name), "(");
+    return result;
+  }
+
+  to_codetext_lines():PC.CodeText[] {
+    return [PC.code("Hei")];
+  }
 }
 
 export type Defaults = {globals:object, nodes:object[]};

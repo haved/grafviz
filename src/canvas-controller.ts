@@ -1,13 +1,13 @@
 import Konva from 'konva';
-import GraphViz from './graphviz';
+import GrafViz from './grafviz';
 
 export default class CanvasController {
-  graphviz: GraphViz;
+  grafviz: GrafViz;
   stage: Konva.Stage;
   node_layer: Konva.Layer;
 
-  constructor(container: HTMLDivElement, graphviz: GraphViz) {
-    this.graphviz = graphviz;
+  constructor(container: HTMLDivElement, grafviz: GrafViz) {
+    this.grafviz = grafviz;
 
     this.stage = new Konva.Stage({
       container: container,

@@ -5,7 +5,7 @@ import State from './state';
 
 const MAX_UNDO_HISTORY = 100;
 
-export default class GraphViz {
+export default class GrafViz {
   private _state: State;
   private _undo_states: State[] = [];
   private _redo_states: State[] = [];
@@ -21,7 +21,7 @@ export default class GraphViz {
     this.update();
   }
 
-  update() {
+    update() {
     this.canvas_controller.update();
     requestAnimationFrame(this.update.bind(this));
   }

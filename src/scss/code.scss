@@ -23,8 +23,12 @@
     font-weight: 600;
 }
 
-.field {
+.field, .parameter, .global {
     color: rgb(86, 208, 245);
+}
+
+.func {
+    color: rgb(206, 198, 94);
 }
 
 .plain_type {

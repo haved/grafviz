@@ -50,6 +50,18 @@ export function field(text: string) {
   return code(text, "field");
 }
 
+export function func(text: string) {
+  return code(text, "func");
+}
+
+export function parameter(text: string) {
+  return code(text, "parameter");
+}
+
+export function global(text: string) {
+  return code(text, "global");
+}
+
 export function plain_type(name:string):CodeText {
   return code(name, "plain_type");
 }
@@ -84,3 +96,5 @@ export const type_u32 = keyword_type("u32");
 export const type_i32 = keyword_type("i32");
 export const type_u64 = keyword_type("u64");
 export const type_i64 = keyword_type("i64");
+
+export const init_NodePool = chain(func("Pool"), "(", type_Node, ")");

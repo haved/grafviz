@@ -4,13 +4,13 @@
         <div class="selected"
         v-on:click="toggle()">
             <font-awesome-icon icon="caret-down"/>
-            {{graphviz.type.title}}
+            {{grafviz.type.title}}
         </div>
         <div class="chooser">
             <div class="item"
-            v-for="(type, index) in graphviz.types"
+            v-for="(type, index) in grafviz.types"
             :key="index"
-            v-bind:class="{selected: type == graphviz.type}"
+            v-bind:class="{selected: type == grafviz.type}"
             v-on:click="choose(type)">
                 {{type.title}}
             </div>
@@ -22,13 +22,13 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import GraphViz from '@/graphviz';
+import GrafViz from '@/grafviz';
 import GraphType from '@/graphtypes/graphtype';
 import $ from 'jquery';
 
 @Component
 export default class extends Vue {
-    @Prop() graphviz!:GraphViz;
+    @Prop() grafviz!:GrafViz;
 
     open : boolean = false;
 
@@ -38,9 +38,9 @@ export default class extends Vue {
 
     choose(type:GraphType) {
         this.open = false;
-        if(type == this.graphviz.type)
+        if(type == this.grafviz.type)
             return;
-        this.graphviz.set_graph_type(type);
+        this.grafviz.set_graph_type(type);
     }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div class="guide">
     <div class="inner codefont">
-      <span v-if="text==='_graphviz'">
-        <h2>Graphviz</h2>
+      <span v-if="text==='_grafviz'">
+        <h2>Grafviz</h2>
         This website lets you visualize different graph based datastructures, and visually see the algorithms operating on the graphs.<br>
         At the top of the page you can pick a data structure of your choice.<br>
         At the top of this sidebar there are 3 panels that give information about the current datastructure.

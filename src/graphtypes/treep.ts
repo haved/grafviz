@@ -21,7 +21,7 @@ export default class Treep extends GraphType {
   }
   make_global_descs(): GlobalDesc[] {
     return [
-      //new GlobalDesc("node_pool", )
+      new GlobalDesc("node_pool", PC.init_NodePool, ()=>{})
     ];
   }
   make_algorithms(): Algorithm[] {

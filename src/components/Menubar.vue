@@ -1,29 +1,29 @@
 <template>
   <div class="menubar">
     <div class="buttons">
-      <menubar-button icon="undo-alt" :enabled="graphviz.can_undo" :callback="graphviz.undo.bind(graphviz)"/>
-      <menubar-button icon="redo-alt" :enabled="graphviz.can_redo" :callback="graphviz.redo.bind(graphviz)"/>
+      <menubar-button icon="undo-alt" :enabled="grafviz.can_undo" :callback="grafviz.undo.bind(grafviz)"/>
+      <menubar-button icon="redo-alt" :enabled="grafviz.can_redo" :callback="grafviz.redo.bind(grafviz)"/>
     </div>
     <div class="sep"></div>
-    <div class="buttons" v-if="graphviz.is_executing">
+    <div class="buttons" v-if="grafviz.is_executing">
       <menubar-button icon="step-forward"
-        :callback="graphviz.step.bind(graphviz)"
-        :enabled="graphviz.running_speed == 0"/>
+        :callback="grafviz.step.bind(grafviz)"
+        :enabled="grafviz.running_speed == 0"/>
       <menubar-button icon="pause"
-        :callback="graphviz.pause.bind(graphviz)"
-        :enabled="graphviz.running_speed != 0"/>
+        :callback="grafviz.pause.bind(grafviz)"
+        :enabled="grafviz.running_speed != 0"/>
       <menubar-button icon="play"
-        :callback="graphviz.play.bind(graphviz)"
-        :enabled="graphviz.running_speed != 1"/>
+        :callback="grafviz.play.bind(grafviz)"
+        :enabled="grafviz.running_speed != 1"/>
       <menubar-button icon="forward"
-        :callback="graphviz.faster.bind(graphviz)"
-        :enabled="graphviz.running_speed != 0"/>
-      <span class="speed" v-if="graphviz.running_speed > 1">
-        x{{graphviz.running_speed}}
+        :callback="grafviz.faster.bind(grafviz)"
+        :enabled="grafviz.running_speed != 0"/>
+      <span class="speed" v-if="grafviz.running_speed > 1">
+        x{{grafviz.running_speed}}
       </span>
     </div>
     <div class="flexer"></div>
-    <structure-dropdown v-bind="{graphviz}"/>
+    <structure-dropdown v-bind="{grafviz}"/>
   </div>
 </template>
 
@@ -32,13 +32,13 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import MenubarButton from './MenubarButton.vue';
 import StructureDropdown from './StructureDropdown.vue';
-import GraphViz from '@/graphviz';
+import GrafViz from '@/grafviz';
 
 @Component({
   components: {MenubarButton, StructureDropdown}
 })
 export default class Menubar extends Vue {
-  @Prop() private graphviz!: GraphViz;
+  @Prop() private grafviz!: GrafViz;
 }
 </script>
 
