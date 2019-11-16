@@ -3,7 +3,8 @@
     <div v-on:click="toggle" class="titlebar" :class="{disabled: empty()}">
       <font-awesome-icon icon="angle-right" v-if="hidden || empty()"/>
       <font-awesome-icon icon="angle-down" v-else/>
-      {{title}}</div>
+      <span class="title">{{title}}</span>
+    </div>
     <div class="content codefont" v-if="!hidden && !empty()">
       <div v-for="(line, index) in lines" :key="index">
         <span class="plain-line" v-if="is_code(line)" v-html="line.html"/> 
@@ -61,6 +62,8 @@ export default class SidebarPanel extends Vue {
   box-shadow: 0px 2px 3px #66666666;
   z-index: 5;
   cursor: pointer;
+
+  position: relative;
 }
 
 .titlebar.disabled {
@@ -71,6 +74,11 @@ export default class SidebarPanel extends Vue {
 
 .titlebar:not(.disabled):hover {
   background-color: #5b5;
+}
+
+.title {
+  position: absolute;
+  left: 2rem;
 }
 
 .content {

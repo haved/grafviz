@@ -52,7 +52,7 @@ export class Parameter {
 export class Algorithm {
   name: string;
   parameteres: Parameter[];
-  shown: boolean = true;
+  shown:{val:boolean} = {val:true};
 
   constructor(name: string, parameters: Parameter[]) {
     this.name = name;

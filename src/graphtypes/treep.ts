@@ -1,4 +1,4 @@
-import GraphType, { NodeField, GlobalDesc, Algorithm, Defaults } from './graphtype';
+import GraphType, { NodeField, GlobalDesc, Algorithm, Parameter, Defaults } from './graphtype';
 import * as PC from '@/pseudocode';
 
 const text = `\
@@ -13,10 +13,11 @@ export default class Treep extends GraphType {
   
   make_node_fields(): NodeField[] {
     return [
-      new NodeField("random", PC.type_u64, PC.code("rand()")),
+      new NodeField("value", PC.type_i32),
       new NodeField("left", PC.type_NodeOptMutPtr, PC.null_value),
       new NodeField("right", PC.type_NodeOptMutPtr, PC.null_value),
-      new NodeField("children", PC.type_NodeOptMutPtr, PC.number(0))
+      new NodeField("children", PC.type_u32, PC.number(0)),
+      new NodeField("random", PC.type_u64, PC.code("rand()"))
     ];
   }
   make_global_descs(): GlobalDesc[] {
@@ -25,7 +26,9 @@ export default class Treep extends GraphType {
     ];
   }
   make_algorithms(): Algorithm[] {
-    return [];
+    return [
+      new Algorithm("make_node", [new Parameter("value", PC.type_i32)])
+    ];
   }
   make_defaults(): Defaults {
     return {

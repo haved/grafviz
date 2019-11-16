@@ -1,11 +1,11 @@
 <template>
   <div class="line">
     <div v-on:click="toggle" class="main-line">
-      <font-awesome-icon icon="angle-down" v-if="line.shown"/>
+      <font-awesome-icon icon="angle-down" v-if="line.shown.val"/>
       <font-awesome-icon icon="angle-right" v-else/>
-      <span v-html="line.title.html"/>
+      <span class="main-line-text" v-html="line.title.html"/>
     </div>
-    <div class="body" v-if="line.shown">
+    <div class="body" v-if="line.shown.val">
       <div class="inner-line"
       v-for="(inner, index) in line.content"
       :key="index"
@@ -18,15 +18,14 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { CodeText } from '@/pseudocode';
 
-export type ToggleLineData = {title:CodeText, content: CodeText[], shown:boolean};
+export type ToggleLineData = {title:CodeText, content: CodeText[], shown:{val:boolean}};
 
 @Component
 export default class ToggleLine extends Vue {
   @Prop() private line!: ToggleLineData;
   
   toggle() {
-    this.line.shown = !this.line.shown;
-    //this.$forceUpdate();
+    this.line.shown.val = !this.line.shown.val;
   }
 }
 </script>
@@ -35,11 +34,17 @@ export default class ToggleLine extends Vue {
 @import "@/scss/_variables.scss";
 
 .main-line {
+  position: relative;
   background-color: #0002;
 }
 
 .main-line:hover {
   background-color: #FFF1;
+}
+
+.main-line-text {
+  position: absolute;
+  left: 1.4rem;
 }
 
 .inner-line, .main-line {
