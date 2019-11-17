@@ -32,6 +32,10 @@ export function chain(...args: (CodeText|string)[]):CodeText {
   return CodeText.of_html(all_code.map(val=>val.html).join(""));
 }
 
+export function join(sep:string, list:CodeText[]):CodeText {
+  return CodeText.of_html(list.map(v=>v.html).join(sep));
+}
+
 // == All the good stuff bellow here ==
 
 export function code(text: string, css?:string):CodeText {
@@ -85,6 +89,9 @@ export function optional(of:CodeText) {
 export const type_colon = code(":", "colon")
 export const spaced_assignment = code(" = ");
 export const semicolon = code(";");
+export const opening_curly = code(" {", "curly");
+export const closing_curly = code("}", "curly");
+
 export const null_value = code("null", "literal");
 
 export const type_Node = plain_type("Node");

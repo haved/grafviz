@@ -65,10 +65,10 @@ export class Algorithm {
   }
 
   to_signature_codetext():PC.CodeText {
-    let result = PC.chain(PC.func(this.name), "(", ...this.parameteres.map(p=>p.to_codetext()), ")");
+    let result = PC.chain(PC.func(this.name), "(", PC.join(", ", this.parameteres.map(v=>v.to_codetext())), ")");
     if(this.return_type)
       result = PC.chain(result, ":", this.return_type);
-    return result;
+    return PC.chain(result, PC.opening_curly);
   }
 
   to_codetext_lines():PC.CodeText[] {
