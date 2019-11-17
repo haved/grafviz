@@ -84,7 +84,7 @@ export default class SidebarPanel extends Vue {
 .content {
   padding: .5rem 0;
   font-size: 0.9rem;
-  background-color: #333;
+  background-color: #262626;
   white-space: nowrap;
   overflow-x: auto;
   display:flex;

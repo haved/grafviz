@@ -52,15 +52,22 @@ export class Parameter {
 export class Algorithm {
   name: string;
   parameteres: Parameter[];
-  shown:{val:boolean} = {val:true};
+  return_type?: PC.CodeText;
+  lines: PC.CodeText[];
 
-  constructor(name: string, parameters: Parameter[]) {
+  shown:{val:boolean} = {val:false};
+
+  constructor(name: string, parameters: Parameter[], return_type?: PC.CodeText, lines?:PC.CodeText[]) {
     this.name = name;
     this.parameteres = parameters;
+    this.return_type = return_type;
+    this.lines = lines ?? [];
   }
 
   to_signature_codetext():PC.CodeText {
-    let result = PC.chain(PC.func(this.name), "(");
+    let result = PC.chain(PC.func(this.name), "(", ...this.parameteres.map(p=>p.to_codetext()), ")");
+    if(this.return_type)
+      result = PC.chain(result, ":", this.return_type);
     return result;
   }
 

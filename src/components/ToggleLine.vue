@@ -35,7 +35,6 @@ export default class ToggleLine extends Vue {
 
 .main-line {
   position: relative;
-  background-color: #0002;
 }
 
 .main-line:hover {
