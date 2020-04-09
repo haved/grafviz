@@ -72,7 +72,7 @@ export class Algorithm {
   }
 
   to_codetext_lines():PC.CodeText[] {
-    return [PC.code("Hei")];
+    return this.lines;
   }
 }
 

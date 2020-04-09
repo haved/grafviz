@@ -28,7 +28,10 @@ export default class Treep extends GraphType {
   make_algorithms(): Algorithm[] {
     return [
       new Algorithm("make_node", [new Parameter("value", PC.type_i32)]),
-      new Algorithm("merge", [new Parameter("a", PC.type_NodeOptMutPtr), new Parameter("b", PC.type_NodeOptMutPtr)], PC.type_NodeOptMutPtr)
+      new Algorithm("merge", [new Parameter("a", PC.type_NodeOptMutPtr), new Parameter("b", PC.type_NodeOptMutPtr)], PC.type_NodeOptMutPtr, [
+        PC.code("if a == None"),
+        PC.code("if b == None")
+      ])
     ];
   }
   make_defaults(): Defaults {
