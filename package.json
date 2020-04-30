@@ -15,7 +15,7 @@
     "@types/jquery": "^3.3.34",
     "core-js": "^3.6.4",
     "escape-html": "^1.0.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "konva": "^4.2.2",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
